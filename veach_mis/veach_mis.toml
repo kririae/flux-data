@@ -1,0 +1,114 @@
+[camera]
+position = [28.2792, 3.5, 0.0]
+look_at = [27.2792, 3.5, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 20.11429322446647
+focal_length = 1.0
+
+[film]
+resolution = [1280, 720]
+denoise = false
+num_samples = 1024
+
+[integrator]
+type = 'path'
+
+max_depth = 64
+rr_depth = 6
+rr_prob = 0.1
+
+[[bsdf]]
+type = 'diffuse'
+name = 'diffuse'
+R = [0.5, 0.5, 0.5]
+
+[[bsdf]]
+type = 'roughmetallic'
+name = 'smooth'
+rough = 0.1
+R = [0.3, 0.3, 0.3]
+etaI = [1.0, 1.0, 1.0]
+etaT = [0.200438, 0.924033, 1.10221]
+k = [3.91295, 2.45285, 2.14219]
+
+[[bsdf]]
+type = 'roughmetallic'
+name = 'glossy'
+rough = 0.2
+R = [0.3, 0.3, 0.3]
+etaI = [1.0, 1.0, 1.0]
+etaT = [0.200438, 0.924033, 1.10221]
+k = [3.91295, 2.45285, 2.14219]
+
+[[bsdf]]
+type = 'roughmetallic'
+name = 'rough'
+roug = 0.3
+R = [0.3, 0.3, 0.3]
+etaI = [1.0, 1.0, 1.0]
+etaT = [0.200438, 0.924033, 1.10221]
+k = [3.91295, 2.45285, 2.14219]
+
+[[bsdf]]
+type = 'roughmetallic'
+name = 'superrough'
+rough = 0.5
+R = [0.3, 0.3, 0.3]
+etaI = [1.0, 1.0, 1.0]
+etaT = [0.200438, 0.924033, 1.10221]
+k = [3.91295, 2.45285, 2.14219]
+
+[[primitive]]
+type = 'sphere'
+center = [0.0, 6.5, -2.8]
+radius = 1.0
+light = { type = 'area', emission = [7.59909, 7.59909, 7.59909] }
+
+[[primitive]]
+type = 'sphere'
+center = [0.0, 6.5, 0.0]
+radius = 0.5
+light = { type = 'area', emission = [30.3964, 30.3964, 30.3964] }
+
+[[primitive]]
+type = 'sphere'
+center = [0.0, 6.5, 2.7]
+radius = 0.05
+light = { type = 'area', emission = [3039.64, 3039.64, 3039.64] }
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/DiffuseRectangle0.stl'
+face_normals = true
+bsdf_name = 'diffuse'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/DiffuseRectangle1.stl'
+face_normals = true
+bsdf_name = 'diffuse'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/SmoothCube0.stl'
+face_normals = true
+bsdf_name = 'smooth'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/GlossyCube1.stl'
+face_normals = true
+bsdf_name = 'glossy'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/RoughCube2.stl'
+face_normals = true
+bsdf_name = 'rough'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/SuperRoughCube3.stl'
+face_normals = true
+bsdf_name = 'superrough'
+
