@@ -52,35 +52,35 @@ light = { type = 'area', emission = [17.0, 12.0, 5.0] }
 type = 'trimesh'
 path = 'geometry/floor.stl'
 face_normals = true
-bsdf_name = 'grey'
+bsdf = 'grey'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/left.stl'
 face_normals = true
-bsdf_name = 'red'
+bsdf = 'red'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/right.stl'
 face_normals = true
-bsdf_name = 'green'
+bsdf = 'green'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/ceiling.stl'
 face_normals = true
-bsdf_name = 'grey'
+bsdf = 'grey'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/back.stl'
 face_normals = true
-bsdf_name = 'grey'
+bsdf = 'grey'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/boxes.stl'
 face_normals = true
-bsdf_name = 'grey'
+bsdf = 'grey'
 

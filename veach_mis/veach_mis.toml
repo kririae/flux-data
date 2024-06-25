@@ -80,35 +80,35 @@ light = { type = 'area', emission = [3039.64, 3039.64, 3039.64] }
 type = 'trimesh'
 path = 'geometry/DiffuseRectangle0.stl'
 face_normals = true
-bsdf_name = 'diffuse'
+bsdf = 'diffuse'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/DiffuseRectangle1.stl'
 face_normals = true
-bsdf_name = 'diffuse'
+bsdf = 'diffuse'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/SmoothCube0.stl'
 face_normals = true
-bsdf_name = 'smooth'
+bsdf = 'smooth'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/GlossyCube1.stl'
 face_normals = true
-bsdf_name = 'glossy'
+bsdf = 'glossy'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/RoughCube2.stl'
 face_normals = true
-bsdf_name = 'rough'
+bsdf = 'rough'
 
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/SuperRoughCube3.stl'
 face_normals = true
-bsdf_name = 'superrough'
+bsdf = 'superrough'
 

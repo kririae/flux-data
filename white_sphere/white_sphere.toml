@@ -29,5 +29,5 @@ R = [1.0, 1.0, 1.0]
 type = 'sphere'
 center = [0.0, 1.0, 0.0]
 radius = 2.0
-bsdf_name = 'white'
+bsdf = 'white'
 

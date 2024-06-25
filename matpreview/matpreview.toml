@@ -65,7 +65,7 @@ R = { type = 'checkerboard', scale = [16.0, 16.0] }
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/matpreview_0.obj'
-bsdf_name = 'grey'
+bsdf = 'grey'
 
 [[primitive]]
 type = 'trimesh'
@@ -75,4 +75,4 @@ bsdf = { type = 'diffuse', R = [0.18, 0.18, 0.18] }
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/matpreview_2.obj'
-bsdf_name = 'coatwooden'
+bsdf = 'coatwooden'
