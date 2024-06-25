@@ -1,0 +1,70 @@
+[camera]
+position = [0.0, 4.0, 6.8]
+look_at = [0.0, 0.8, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 30
+focal_length = 1.0
+
+[film]
+resolution = [1440, 1440]
+denoise = false
+num_samples = 2048
+
+[integrator]
+type = 'path'
+
+max_depth = 64
+rr_depth = 4
+rr_prob = 0.1
+
+[envmap]
+scale = 1.5
+
+[envmap.texture]
+type = 'image'
+path = "texture/industrial_sunset_02_puresky_2k.exr"
+
+[[bsdf]]
+type = 'roughmetallic'
+name = 'Au'
+rough = 0.03
+R = [1.0, 1.0, 1.0]
+etaI = [1.0002770424, 1.0002770424, 1.0002770424]
+etaT = [0.143124, 0.374956, 1.44248]
+k = [3.98315, 2.38572, 1.60321]
+
+[[bsdf]]
+name = 'roughbyakuroku'
+type = 'roughdiffuse'
+rough = 0.2
+R = [0.65882353, 0.84705882, 0.7254902]
+
+[[bsdf]]
+name = 'smoothbyakuroku'
+type = 'smoothplastic'
+Rs = [1.0, 1.0, 1.0]
+Rd = [0.65882353, 0.84705882, 0.7254902]
+etaI = 1.0
+etaT = 1.3
+rough = 0.1
+
+[[bsdf]]
+name = 'grey'
+type = 'diffuse'
+R = { type = 'checkerboard', scale = [16.0, 16.0] }
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_0.obj'
+bsdf_name = 'grey'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_1.obj'
+bsdf = { type = 'diffuse', R = [0.18, 0.18, 0.18] }
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_2.obj'
+bsdf_name = 'smoothbyakuroku'
+
