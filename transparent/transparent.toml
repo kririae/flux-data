@@ -1,0 +1,51 @@
+[camera]
+position = [20.0, -16.0, 25.8]
+look_at = [-2.0, 0.0, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 12
+focal_length = 1.0
+
+[film]
+resolution = [2560, 1440]
+denoise = false
+num_samples = 1024
+
+[integrator]
+type = 'path'
+
+max_depth = 32
+rr_depth = 8
+rr_prob = 0.1
+
+[envmap]
+texture = { type = 'constant', color = [0.43, 0.43, 0.43] }
+
+[[bsdf]]
+type = 'diffuse'
+name = 'grey'
+R = [0.725, 0.71, 0.68]
+
+[[bsdf]]
+type = 'diffuse'
+name = 'green'
+R = [0.14, 0.45, 0.091]
+
+[[bsdf]]
+type = 'diffuse'
+name = 'red'
+R = [0.63, 0.065, 0.05]
+
+[[bsdf]]
+type = 'diffuse'
+name = 'wireframe'
+
+[bsdf.R]
+type = 'wireframe'
+line_width = 0.003
+interior_color = [1.0, 1.0, 1.0]
+edge_color = [0.2, 0.2, 0.2]
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/transparent.ply'
+bsdf = 'wireframe'
