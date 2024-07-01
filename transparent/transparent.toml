@@ -1,24 +1,27 @@
 [camera]
-position = [20.0, -16.0, 25.8]
-look_at = [-2.0, 0.0, 0.0]
+position = [15.0, -16.0, 25.8]
+look_at = [0.0, 0.0, 0.0]
 ref_up = [0.0, 1.0, 0.0]
-fov = 12
+fov = 13
 focal_length = 1.0
 
 [film]
 resolution = [2560, 1440]
-denoise = false
-num_samples = 1024
+denoise = true
+num_samples = 2048
+clamp_at = 64.0
 
 [integrator]
 type = 'path'
 
-max_depth = 32
-rr_depth = 8
+max_depth = 512
+rr_depth = 32
 rr_prob = 0.1
 
 [envmap]
-texture = { type = 'constant', color = [0.43, 0.43, 0.43] }
+scale = 6.0
+rotation = [0.0, 0.0, 0.0]
+texture = { type = 'image', path = 'texture/sky.exr' }
 
 [[bsdf]]
 type = 'diffuse'
@@ -45,7 +48,15 @@ line_width = 0.003
 interior_color = [1.0, 1.0, 1.0]
 edge_color = [0.2, 0.2, 0.2]
 
+[[bsdf]]
+type = 'glass'
+name = 'glass-bk7'
+R = [1.0, 1.0, 1.0]
+T = [1.0, 1.0, 1.0]
+etaI = 1.0
+etaT = 1.51
+
 [[primitive]]
 type = 'trimesh'
 path = 'geometry/transparent.ply'
-bsdf = 'wireframe'
+bsdf = 'glass-bk7'

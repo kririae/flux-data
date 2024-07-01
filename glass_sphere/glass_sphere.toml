@@ -1,0 +1,35 @@
+[camera]
+position = [0.0, 1.0, 6.8]
+look_at = [0.0, 1.0, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 19.5
+focal_length = 1.0
+
+[film]
+resolution = [1024, 1024]
+denoise = false
+num_samples = 512
+
+[integrator]
+type = 'path'
+
+max_depth = 32
+rr_depth = 8
+rr_prob = 0.1
+
+[envmap]
+texture = { type = 'image', path = 'texture/industrial_sunset_02_puresky_2k.exr' }
+
+[[bsdf]]
+type = 'glass'
+name = 'white'
+R = [1.0, 1.0, 1.0]
+T = [1.0, 1.0, 1.0]
+etaI = 1.0
+etaT = 1.4
+
+[[primitive]]
+type = 'sphere'
+center = [0.0, 1.0, 0.0]
+radius = 1.0
+bsdf = 'white'
