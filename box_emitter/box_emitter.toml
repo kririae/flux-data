@@ -1,0 +1,57 @@
+[camera]
+position = [3.85727, 3.4234, 5.9649]
+look_at = [0.5, 0.8, 0.32]
+ref_up = [0.0, 1.0, 0.0]
+fov = 25
+focal_length = 1.0
+
+[film]
+resolution = [1280, 720]
+denoise = false
+num_samples = 512
+
+[integrator]
+type = 'path'
+max_depth = 64
+rr_depth = 8
+rr_prob = 0.1
+
+[[bsdf]]
+type = 'glass'
+name = 'base_0'
+R = [1.0, 1.0, 1.0]
+T = [1.0, 1.0, 1.0]
+etaI = 1.0
+etaT = 1.5
+
+[[bsdf]]
+type = 'diffuse'
+name = 'base_1'
+R = [1.0, 1.0, 1.0]
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/ground.ply'
+face_normals = true
+
+[primitive.bsdf]
+type = 'roughmetallic'
+rough = 0.4
+etaI = [1.0, 1.0, 1.0]
+etaT = [1.5, 1.5, 1.5]
+k = [6.0, 6.0, 6.0]
+R = [1.0, 1.0, 1.0]
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/orange_box.ply'
+face_normals = true
+bsdf = 'base_0'
+light = { type = 'area', emission = [1.0, 0.275, 0.054] }
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/blue_box.ply'
+face_normals = true
+bsdf = 'base_0'
+light = { type = 'area', emission = [0.358, 0.534, 2.0] }
