@@ -5,16 +5,16 @@
   <sensor type="perspective">
     <float name="fov" value="19.5" />
     <transform name="toWorld">
-      <lookAt origin="0, 1, -6.8" target="0, 1, 0" up="0, 1, 0" />
+      <lookAt origin="0, 1, 6.8" target="0, 1, 0" up="0, 1, 0" />
     </transform>
     <film type="hdrfilm">
-      <integer name="width" value="1024" />
-      <integer name="height" value="1024" />
+      <integer name="width" value="512" />
+      <integer name="height" value="512" />
       <boolean name="banner" value="false" />
       <rfilter type="box" />
     </film>
     <sampler type="halton">
-      <integer name="sampleCount" value="128" />
+      <integer name="sampleCount" value="16384" />
     </sampler>
   </sensor>
   <shape type="sphere">
@@ -26,6 +26,9 @@
     </bsdf>
   </shape>
   <emitter type="envmap">
+    <transform name="toWorld">
+      <rotate y="1" angle="180" />
+    </transform>
     <string name="filename" value="texture/industrial_sunset_02_puresky_2k.exr" />
   </emitter>
 </scene>

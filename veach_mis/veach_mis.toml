@@ -8,7 +8,7 @@ focal_length = 1.0
 [film]
 resolution = [1280, 720]
 denoise = false
-num_samples = 1024
+num_samples = 4096
 
 [integrator]
 type = 'path'
@@ -25,7 +25,7 @@ R = [0.5, 0.5, 0.5]
 [[bsdf]]
 type = 'roughmetallic'
 name = 'smooth'
-rough = 0.1
+rough = 0.03162
 R = [0.3, 0.3, 0.3]
 etaI = [1.0, 1.0, 1.0]
 etaT = [0.200438, 0.924033, 1.10221]
@@ -78,37 +78,36 @@ light = { type = 'area', emission = [3039.64, 3039.64, 3039.64] }
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/DiffuseRectangle0.stl'
+path = 'geometry/DiffuseRectangle0.ply'
 face_normals = true
 bsdf = 'diffuse'
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/DiffuseRectangle1.stl'
+path = 'geometry/DiffuseRectangle1.ply'
 face_normals = true
 bsdf = 'diffuse'
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/SmoothCube0.stl'
+path = 'geometry/SmoothCube0.ply'
 face_normals = true
 bsdf = 'smooth'
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/GlossyCube1.stl'
+path = 'geometry/GlossyCube1.ply'
 face_normals = true
 bsdf = 'glossy'
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/RoughCube2.stl'
+path = 'geometry/RoughCube2.ply'
 face_normals = true
 bsdf = 'rough'
 
 [[primitive]]
 type = 'trimesh'
-path = 'geometry/SuperRoughCube3.stl'
+path = 'geometry/SuperRoughCube3.ply'
 face_normals = true
 bsdf = 'superrough'
-

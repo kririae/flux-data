@@ -6,9 +6,9 @@ fov = 19.5
 focal_length = 1.0
 
 [film]
-resolution = [1024, 1024]
+resolution = [512, 512]
 denoise = false
-num_samples = 512
+num_samples = 4096
 
 [integrator]
 type = 'path'

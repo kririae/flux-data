@@ -8,7 +8,7 @@ focal_length = 1.0
 [film]
 resolution = [1024, 1024]
 denoise = false
-num_samples = 32
+num_samples = 1024
 
 [integrator]
 type = 'path'
@@ -31,4 +31,3 @@ type = 'sphere'
 center = [0.0, 1.0, 0.0]
 radius = 3.0
 bsdf = 'white'
-

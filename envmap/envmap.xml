@@ -1,0 +1,37 @@
+<scene version="0.6.0">
+  <default name="integrator" value="path" />
+  <integrator type="path">
+    <integer name="maxDepth" value="64" />
+  </integrator>
+  <sensor type="perspective">
+    <float name="fov" value="60" />
+    <transform name="toWorld">
+      <lookAt origin="0, 1, 6.8" target="0, 1, 0" up="0, 1, 0" />
+    </transform>
+    <sampler type="halton">
+      <integer name="sampleCount" value="16384" />
+    </sampler>
+    <film type="hdrfilm">
+      <integer name="width" value="1024" />
+      <integer name="height" value="1024" />
+      <boolean name="banner" value="false" />
+      <rfilter type="box" />
+    </film>
+  </sensor>
+  <bsdf type="diffuse" id="white">
+    <rgb name="reflectance" value="1.0, 1.0, 1.0" />
+  </bsdf>
+  <shape type="sphere">
+    <point name="center" x="0" y="1" z="0" />
+    <float name="radius" value="3.0" />
+    <bsdf type="diffuse">
+      <rgb name="reflectance" value="1.0, 1.0, 1.0" />
+    </bsdf>
+  </shape>
+  <emitter type="envmap">
+    <transform name="toWorld">
+      <rotate y="1" angle="180" />
+    </transform>
+    <string name="filename" value="texture/medieval_cafe_2k.exr" />
+  </emitter>
+</scene>
