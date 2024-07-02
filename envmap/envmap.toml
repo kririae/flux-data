@@ -6,7 +6,7 @@ fov = 60
 focal_length = 1.0
 
 [film]
-resolution = [1024, 1024]
+resolution = [512, 512]
 denoise = false
 num_samples = 1024
 

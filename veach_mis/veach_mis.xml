@@ -9,7 +9,7 @@
       <lookAt origin="28.2792, 3.5, 0.0" target="27.2792, 3.5, 0.0" up="0, 1, 0" />
     </transform>
     <sampler type="independent">
-      <integer name="sampleCount" value="512" />
+      <integer name="sampleCount" value="128" />
     </sampler>
     <film type="hdrfilm">
       <integer name="width" value="1280" />
