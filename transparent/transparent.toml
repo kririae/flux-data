@@ -8,19 +8,18 @@ focal_length = 1.0
 [film]
 resolution = [2560, 1440]
 denoise = true
-num_samples = 2048
+num_samples = 512
 clamp_at = 64.0
 
 [integrator]
 type = 'path'
-
 max_depth = 512
 rr_depth = 32
 rr_prob = 0.1
 
 [envmap]
 scale = 6.0
-rotation = [0.0, 0.0, 0.0]
+rotation = [-30.0, 0.0, 0.0]
 texture = { type = 'image', path = 'texture/sky.exr' }
 
 [[bsdf]]
@@ -54,7 +53,7 @@ name = 'glass-bk7'
 R = [1.0, 1.0, 1.0]
 T = [1.0, 1.0, 1.0]
 etaI = 1.0
-etaT = 1.51
+etaT = 1.30
 
 [[primitive]]
 type = 'trimesh'
