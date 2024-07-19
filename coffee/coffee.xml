@@ -1,0 +1,180 @@
+<scene version="0.6.0">
+  <integrator type="path">
+    <integer name="maxDepth" value="17" />
+    <boolean name="strictNormals" value="false" />
+  </integrator>
+  <sensor type="perspective">
+    <float name="fov" value="31.25" />
+    <string name="fovAxis" value="y" />
+    <transform name="toWorld">
+      <lookAt origin="0.0, 0.2, 0.8" target="0, 0.17, 0" up="0, 1, 0" />
+    </transform>
+    <sampler type="sobol">
+      <integer name="sampleCount" value="64" />
+    </sampler>
+    <film type="hdrfilm">
+      <integer name="width" value="800" />
+      <integer name="height" value="1000" />
+      <boolean name="banner" value="false" />
+      <rfilter type="box" />
+    </film>
+  </sensor>
+  <bsdf type="twosided" id="Plastic_Orange">
+    <bsdf type="plastic">
+      <float name="intIOR" value="1.5" />
+      <float name="extIOR" value="1" />
+      <boolean name="nonlinear" value="true" />
+      <rgb name="diffuseReflectance" value="1, 0.378676, 0.0134734" />
+    </bsdf>
+  </bsdf>
+  <bsdf type="twosided" id="Plastic_Black">
+    <bsdf type="roughplastic">
+      <float name="alpha" value="0.1" />
+      <string name="distribution" value="ggx" />
+      <float name="intIOR" value="1.5" />
+      <float name="extIOR" value="1" />
+      <boolean name="nonlinear" value="true" />
+      <rgb name="diffuseReflectance" value="0.00631, 0.00631, 0.00631" />
+    </bsdf>
+  </bsdf>
+  <bsdf type="dielectric" id="Glass">
+    <float name="intIOR" value="1.5" />
+    <float name="extIOR" value="1" />
+  </bsdf>
+  <bsdf type="twosided" id="Metal">
+    <bsdf type="conductor">
+      <string name="material" value="Cu" />
+    </bsdf>
+  </bsdf>
+  <bsdf type="twosided" id="Floor">
+    <bsdf type="plastic">
+      <float name="intIOR" value="1.5" />
+      <float name="extIOR" value="1" />
+      <boolean name="nonlinear" value="true" />
+      <rgb name="diffuseReflectance" value="0.578596, 0.578596, 0.578596" />
+    </bsdf>
+  </bsdf>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh013.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh008.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh010.obj" />
+    <ref id="Glass" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh009.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh015.obj" />
+    <ref id="Metal" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh012.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh016.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh017.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh018.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh019.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh007.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh006.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh005.obj" />
+    <boolean name="faceNormals" value="true" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh003.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh002.obj" />
+    <ref id="Metal" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh001.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh011.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh000.obj" />
+    <ref id="Plastic_Orange" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh014.obj" />
+    <ref id="Plastic_Black" />
+  </shape>
+  <shape type="obj">
+    <string name="filename" value="geometry/Mesh004.obj" />
+    <ref id="Floor" />
+  </shape>
+  <shape type="rectangle">
+    <transform name="toWorld">
+      <matrix
+        value="0.0813859 -3.42425e-009 0.0783378 -0.277923 1.31768e-008 -0.224422 -1.25677e-008 0.225271 0.174532 1.85401e-008 -0.0365296 0.163724 0 0 0 1" />
+    </transform>
+    <bsdf type="twosided">
+      <bsdf type="diffuse">
+        <rgb name="reflectance" value="0, 0, 0" />
+      </bsdf>
+    </bsdf>
+    <emitter type="area">
+      <rgb name="radiance" value="2, 2, 2" />
+    </emitter>
+  </shape>
+  <shape type="rectangle">
+    <transform name="toWorld">
+      <matrix
+        value="-9.80906e-009 0.00227401 -0.0820026 0.322947 0.224423 1.56693e-016 -3.58473e-009 0.25176 -1.22092e-010 -0.182697 -0.00102068 0.046278 0 0 0 1" />
+    </transform>
+    <bsdf type="twosided">
+      <bsdf type="diffuse">
+        <rgb name="reflectance" value="0, 0, 0" />
+      </bsdf>
+    </bsdf>
+    <emitter type="area">
+      <rgb name="radiance" value="2, 2, 2" />
+    </emitter>
+  </shape>
+  <shape type="rectangle">
+    <transform name="toWorld">
+      <matrix
+        value="-0.230128 -6.99084e-016 1.59932e-008 0 -3.47484e-008 4.62982e-009 -0.105918 0.50385 0 -0.230128 -1.00592e-008 0.0372435 0 0 0 1" />
+    </transform>
+    <bsdf type="twosided">
+      <bsdf type="diffuse">
+        <rgb name="reflectance" value="0, 0, 0" />
+      </bsdf>
+    </bsdf>
+    <emitter type="area">
+      <rgb name="radiance" value="2, 2, 2" />
+    </emitter>
+  </shape>
+</scene>
