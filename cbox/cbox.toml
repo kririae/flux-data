@@ -8,7 +8,8 @@ focal_length = 1.0
 [film]
 resolution = [512, 512]
 denoise = false
-num_samples = 1024
+num_samples = 512
+
 
 [integrator]
 type = 'path'
@@ -25,6 +26,9 @@ rr_depth = 8
 # The probability in each depth to terminate the path by Russian roulette.
 # The path do have a expected length of `rr_depth + 1 / rr_prob`.
 rr_prob = 0.1
+
+# Disable shader reordering for performance consideration.
+# shader_reorder = false
 
 [[bsdf]]
 type = 'diffuse'

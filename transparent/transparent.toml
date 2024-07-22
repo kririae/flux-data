@@ -8,7 +8,7 @@ focal_length = 1.0
 [film]
 resolution = [2560, 1440]
 denoise = true
-num_samples = 512
+num_samples = 32
 clamp_at = 64.0
 
 [integrator]
@@ -16,6 +16,7 @@ type = 'path'
 max_depth = 512
 rr_depth = 32
 rr_prob = 0.1
+shader_reorder = false
 
 [envmap]
 scale = 6.0
