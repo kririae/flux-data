@@ -1,0 +1,23 @@
+timestamp = "2024-07-22T22:35:02.412817"
+git_commit = "27897fb2cdf478e155de0a1cba09c33b0239e186"
+device = "NVIDIA GeForce RTX 4070 Laptop GPU"
+
+[tests.cbox]
+performance = 204.3863
+all_runs = [ 204.3546, 204.4857, 204.3186,]
+passed = true
+
+[tests.coffee]
+performance = 341.7984
+all_runs = [ 343.3324, 339.3986, 342.6642,]
+passed = true
+
+[tests.transparent]
+performance = 126.52
+all_runs = [ 126.52,]
+passed = true
+
+[tests.veach_mis]
+performance = 363.7889
+all_runs = [ 365.5889, 360.2387, 365.5391,]
+passed = true

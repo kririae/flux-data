@@ -1,0 +1,39 @@
+[global]
+output_dir = "perftest_results"
+
+[[test]]
+type = 'perf'
+name = 'cbox'
+path = 'cbox/cbox.toml'
+expected_performance_range = [180, 220]
+description = "Cornell Box scene for basic performance testing"
+tags = ["basic", "diffuse"]
+env_vars = { FLUX_THREADS = "8" }
+repeat = 3
+
+[[test]]
+type = 'perf'
+name = 'coffee'
+path = 'coffee/coffee.toml'
+expected_performance_range = [330, 350]
+description = "Coffee scene for testing complex materials"
+tags = ["complex", "materials"]
+repeat = 3
+
+[[test]]
+type = 'perf'
+name = 'transparent'
+path = 'transparent/transparent.toml'
+expected_performance_range = [100, 140]
+description = "Transparent scene for testing light transport through glass"
+tags = ["transparent", "glass"]
+repeat = 1
+
+[[test]]
+type = 'perf'
+name = 'veach_mis'
+path = 'veach_mis/veach_mis.toml'
+expected_performance_range = [350, 400]
+description = "Veach MIS scene for testing multiple importance sampling"
+tags = ["mis", "advanced"]
+repeat = 3

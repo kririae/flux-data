@@ -28,7 +28,7 @@ rr_depth = 8
 rr_prob = 0.1
 
 # Disable shader reordering for performance consideration.
-# shader_reorder = false
+shader_reorder = false
 
 [[bsdf]]
 type = 'diffuse'

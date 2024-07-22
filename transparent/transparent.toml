@@ -16,7 +16,7 @@ type = 'path'
 max_depth = 512
 rr_depth = 32
 rr_prob = 0.1
-shader_reorder = false
+shader_reorder = true
 
 [envmap]
 scale = 6.0
