@@ -7,8 +7,8 @@ focal_length = 1.0
 
 [film]
 resolution = [2560, 1440]
-denoise = true
-num_samples = 32
+denoise = false
+num_samples = 256
 clamp_at = 64.0
 
 [integrator]

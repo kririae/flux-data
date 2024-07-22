@@ -164,15 +164,18 @@ bsdf = "floor"
 
 [[primitive]]
 type = "trimesh"
+face_normals = true
 path = "geometry/rectangle1.obj"
 light = { type = 'area', emission = [2, 2, 2] }
 
 [[primitive]]
 type = "trimesh"
+face_normals = true
 path = "geometry/rectangle2.obj"
 light = { type = 'area', emission = [2, 2, 2] }
 
 [[primitive]]
 type = "trimesh"
+face_normals = true
 path = "geometry/rectangle3.obj"
 light = { type = 'area', emission = [2, 2, 2] }
