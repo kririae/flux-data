@@ -8,10 +8,10 @@ focal_length = 1.0
 [film]
 resolution = [800, 1000]
 denoise = false
-num_samples = 256
+num_samples = 8192
 
 [integrator]
-type = 'path'
+type = "path"
 
 max_depth = 32
 rr_depth = 3
@@ -19,9 +19,15 @@ rr_prob = 0.1
 
 shader_reorder = true
 
+[sampler]
+type = "halton"
+
 [[bsdf]]
-type = "roughmetallic"
+type = "twosided"
 name = "metal"
+
+[bsdf.nested_bsdf]
+type = "roughmetallic"
 rough = 0.03
 R = [1.0, 1.0, 1.0]
 etaI = [1.0, 1.0, 1.0]

@@ -1,0 +1,23 @@
+timestamp = "2024-08-05T16:49:31.813793"
+git_commit = "033a7d87111d4944357f18e7d73925b94e6fecfe"
+device = "NVIDIA GeForce RTX 3090"
+
+[tests.cbox]
+performance = 195.39193333333333
+all_runs = [ 195.3127, 195.3173, 195.5458,]
+passed = true
+
+[tests.coffee]
+performance = 352.68766666666664
+all_runs = [ 352.6889, 352.6342, 352.7399,]
+passed = false
+
+[tests.transparent]
+performance = 123.8289
+all_runs = [ 123.8289,]
+passed = true
+
+[tests.veach_mis]
+performance = 383.35450000000003
+all_runs = [ 383.4223, 383.3414, 383.2998,]
+passed = true

@@ -9,7 +9,6 @@ focal_length = 1.0
 resolution = [2560, 1440]
 denoise = false
 num_samples = 256
-clamp_at = 64.0
 
 [integrator]
 type = 'path'

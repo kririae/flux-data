@@ -1,9 +1,10 @@
 [camera]
-position = [3.85727, 3.4234, 5.9649]
+position = [0.85727, 0.8234, 1.9649]
 look_at = [0.5, 0.8, 0.32]
 ref_up = [0.0, 1.0, 0.0]
-fov = 25
-focal_length = 1.0
+focal_length = 20e-3
+focal_distance = 2.1
+lens_radius = 0.06
 
 [film]
 resolution = [1280, 720]

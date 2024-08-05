@@ -1,0 +1,57 @@
+[camera]
+position = [6.8, 1.0, 0.0]
+look_at = [0.0, 1.0, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 60
+focal_length = 1.0
+
+[film]
+resolution = [512, 512]
+denoise = false
+num_samples = 512
+
+[integrator]
+type = 'path'
+max_depth = 64
+rr_depth = 8
+rr_prob = 0.1
+shader_reorder = false
+
+[envmap]
+[envmap.texture]
+type = "constant"
+color = [1.0, 1.0, 1.0]
+
+[[bsdf]]
+type = "coating"
+name = "Coating"
+sigmaA = [1.0, 1.0, 1.0]
+etaT = 1.5
+
+[bsdf.nested_bsdf]
+type = "diffuse"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/background.ply"
+
+[primitive.bsdf]
+type = "diffuse"
+R = [0.2, 0.2, 0.2]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/L_forward.ply"
+
+[primitive.bsdf]
+name = "Main"
+type = "twosided"
+nested_bsdf = "Coating"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/R_backward.ply"
+
+[primitive.bsdf]
+type = "twosided"
+nested_bsdf = "Main"
