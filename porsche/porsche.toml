@@ -1,0 +1,422 @@
+[camera]
+# position = [-8, 5, 12]
+# look_at = [-0.4, 0.65, 0.8]
+position = [8.6, 5.3, -13]
+look_at = [0.4, 0.78, -0.6]
+#position = [0.0, 0.78, -10.0]
+#look_at = [0.0, 0.78, 0.0]
+ref_up = [0, 1, 0]
+fov = 10
+# focal_distance = 12
+# f_number = 2.8
+
+[film]
+resolution = [3840, 2160]
+denoise = true
+num_samples = 8192
+
+[sampler]
+type = "halton"
+
+[integrator]
+type = 'path'
+max_depth = 32
+rr_depth = 3
+rr_prob = 0.1
+shader_reorder = false
+
+[envmap]
+# scale = 2.4
+# rotation = [0.0, 18.0, 0.0]
+scale = 2.4
+rotation = [-1.0, 165.0, 0.0]
+
+[envmap.texture]
+type = "image"
+path = "texture/syferfontein_1d_clear_puresky_2k.exr"
+
+########################################################
+[[bsdf]]
+type = "diffuse"
+name = "DiffuseBlack"
+R = [0.008, 0.0078, 0.008]
+
+[[bsdf]]
+type = "diffuse"
+name = "DiffuseGrey"
+R = [0.020, 0.0200, 0.020]
+
+[[bsdf]]
+type = "diffuse"
+name = "DiffuseWhite"
+R = [0.6, 0.6, 0.6]
+
+[[bsdf]]
+type = "roughplastic"
+name = "Tire"
+rough = 0.2
+Rs = [0.3, 0.3, 0.3]
+Rd = { type = "image", path = "texture/Tire_COLOR.jpg" }
+etaI = 1.0
+etaT = 1.3
+
+[[bsdf]]
+type = "twosided"
+
+[bsdf.nested_bsdf]
+type = "coating"
+name = "CarbonBody"
+sigmaA = [0.45, 0.45, 0.45]
+thickness = 2.3
+etaI = 1.0
+etaT = 1.14
+
+[bsdf.nested_bsdf.nested_bsdf]
+type = "roughmetallic"
+rough = 0.2
+R = { type = "image", path = "texture/metal_0047_color_4k.jpg", scale = 60 }
+etaI = [1.0, 1.0, 1.0]
+etaT = [1.65746, 0.880369, 0.521229]
+k = [9.22387, 6.26952, 4.837]
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Background.ply"
+
+[primitive.bsdf]
+type = "roughplastic"
+rough = 0.2
+Rs = [0.1, 0.1, 0.1]
+Rd = [0.03, 0.03, 0.03]
+etaI = 1.0
+etaT = 1.3
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Body.ply"
+bsdf = "CarbonBody"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/BodyFlat.ply"
+face_normals = true
+bsdf = "CarbonBody"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Parts.ply"
+
+[primitive.bsdf]
+type = "coating"
+sigmaA = [0.95, 0.95, 0.95]
+thickness = 0.7
+etaI = 1.0
+etaT = 1.1
+
+[primitive.bsdf.nested_bsdf]
+type = "roughmetallic"
+rough = 0.1
+R = { type = "image", path = "texture/metal_0047_color_4k.jpg", scale = 60 }
+etaI = [1.0, 1.0, 1.0]
+etaT = [1.65746, 0.880369, 0.521229]
+k = [9.22387, 6.26952, 4.837]
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/DarkMatte.ply"
+
+[primitive.bsdf]
+type = "smoothplastic"
+Rs = [1.0, 1.0, 1.0]
+Rd = [0.01, 0.01, 0.01]
+etaI = 1.0
+etaT = 1.3
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/DarkMetal.ply"
+
+[primitive.bsdf]
+type = "smoothplastic"
+Rs = [1.0, 1.0, 1.0]
+Rd = [0.01, 0.01, 0.01]
+etaI = 1.0
+etaT = 1.3
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Glasses.ply"
+
+[primitive.bsdf]
+type = "glass"
+R = [1.0, 1.0, 1.0]
+T = [0.8, 0.8, 0.8]
+etaI = 1.0
+etaT = 1.1
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/HeadlightGlass.ply"
+
+[primitive.bsdf]
+type = "thinglass"
+R = [1.0, 1.0, 1.0]
+T = [0.7, 0.7, 0.7]
+etaI = 1.0
+etaT = 1.2
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/HeadlightBody.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.23
+R = [1.0, 1.0, 1.0]
+etaI = [1.0, 1.0, 1.0]
+etaT = [3.18, 3.10, 2.31]
+k = [3.33, 3.30, 3.14]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/HeadlightChrome.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.03
+R = [1.0, 1.0, 1.0]
+etaI = [1.0, 1.0, 1.0]
+etaT = [3.18, 3.10, 2.31]
+k = [3.33, 3.30, 3.14]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/HeadlightEmission.ply"
+
+[primitive.light]
+type = "area"
+emission = [40.0, 40.0, 40.0]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/HeadlightEmissionCenter.ply"
+
+[primitive.bsdf]
+type = "glass"
+R = [1.0, 1.0, 1.0]
+T = [1.0, 1.0, 1.0]
+etaI = 1.0
+etaT = 1.3
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Tire_FL.ply"
+bsdf = "Tire"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Tire_FR.ply"
+bsdf = "Tire"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Tire_RL.ply"
+bsdf = "Tire"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Tire_RR.ply"
+bsdf = "Tire"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Rims.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.4
+R = [0.1, 0.1, 0.1]
+etaI = [1.0, 1.0, 1.0]
+etaT = [2.95, 2.95, 2.95]
+k = [3.18, 3.18, 3.18]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Brakes.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.4
+R = { type = "image", path = "texture/Brakes_DIFF.jpg" }
+etaI = [1.0, 1.0, 1.0]
+etaT = [2.95, 2.95, 2.95]
+k = [3.18, 3.18, 3.18]
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearAirExhausts.ply"
+bsdf = "DiffuseBlack"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Exhaust.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.4
+R = { type = "image", path = "texture/Exhaust_COLOR.jpg" }
+etaI = [1.0, 1.0, 1.0]
+etaT = [2.95, 2.95, 2.95]
+k = [3.18, 3.18, 3.18]
+
+# ########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightBackground.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.03
+R = [1.0, 1.0, 1.0]
+etaI = [1.0, 1.0, 1.0]
+etaT = [3.18, 3.10, 2.31]
+k = [3.33, 3.30, 3.14]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightParts.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.03
+R = [1.0, 1.0, 1.0]
+etaI = [1.0, 1.0, 1.0]
+etaT = [3.18, 3.10, 2.31]
+k = [3.33, 3.30, 3.14]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightGlass.ply"
+
+[primitive.bsdf]
+type = "thinglass"
+R = [1.0, 1.0, 1.0]
+T = [1.0, 1.0, 1.0]
+etaI = 1.0
+etaT = 1.5
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightFrame.ply"
+bsdf = "DiffuseBlack"
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightRedGlass.ply"
+
+[primitive.bsdf]
+type = "glass"
+R = [1.0, 0.0, 0.0]
+T = [1.0, 0.0, 0.0]
+etaI = 1.0
+etaT = 1.45
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightRedEmitter.ply"
+
+[primitive.light]
+type = "area"
+emission = [8.0, 0.0, 0.0]
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/RearLightRedSoftEmitter.ply"
+
+[primitive.bsdf]
+type = "diffuse"
+R = [0.8, 0.0, 0.0]
+
+[primitive.light]
+type = "area"
+emission = [0.1, 0.0, 0.0]
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Mirrors.ply"
+
+[primitive.bsdf]
+type = "roughmetallic"
+rough = 0.03
+R = [1.0, 1.0, 1.0]
+etaI = [1.0, 1.0, 1.0]
+etaT = [3.18, 3.10, 2.31]
+k = [3.33, 3.30, 3.14]
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/InteriorMain.ply"
+
+[primitive.bsdf]
+type = 'roughplastic'
+etaI = 1.0
+etaT = 1.3
+Rs = [0.3, 0.3, 0.3]
+Rd = [0.01, 0.01, 0.01]
+rough = 0.23
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/InteriorWhite.ply"
+
+[primitive.bsdf]
+type = "smoothplastic"
+Rs = [0.6, 0.6, 0.6]
+Rd = [0.9, 0.9, 0.9]
+etaI = 1.0
+etaT = 1.3
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/InteriorFrame.ply"
+
+[primitive.bsdf]
+type = 'roughplastic'
+etaI = 1.0
+etaT = 1.3
+Rs = [0.3, 0.3, 0.3]
+Rd = [0.01, 0.01, 0.01]
+rough = 0.23
+
+[[primitive]]
+type = "trimesh"
+path = "geometry/Banner.ply"
+
+[primitive.bsdf]
+type = "roughplastic"
+rough = 0.3
+Rs = [0.4, 0.4, 0.4]
+Rd = { type = "image", path = "texture/Banner.jpg", address_mode = "border" }
+etaI = 1.0
+etaT = 1.2
+
+########################################################
+[[primitive]]
+type = "trimesh"
+path = "geometry/Intake.ply"
+
+[primitive.bsdf]
+type = "smoothplastic"
+Rs = [1.0, 1.0, 1.0]
+Rd = [0.01, 0.01, 0.01]
+etaI = 1.0
+etaT = 1.1

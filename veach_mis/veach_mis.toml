@@ -10,6 +10,9 @@ resolution = [1280, 720]
 denoise = false
 num_samples = 512
 
+[sampler]
+type = "halton"
+
 [integrator]
 type = 'path'
 
