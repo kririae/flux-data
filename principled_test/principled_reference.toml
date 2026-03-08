@@ -25,7 +25,7 @@ rr_depth  = 4
 rr_prob   = 0.1
 
 [sampler]
-type = 'halton'
+type = 'independent'
 
 [envmap]
 texture = { type = 'constant', color = [0.03, 0.035, 0.04] }
