@@ -1,0 +1,152 @@
+# Broad Principled reference scene.
+# Covers:
+#   1. diffuse-heavy dielectric
+#   2. metallic reflection
+#   3. specular transmission
+#   4. clearcoat
+#   5. sheen + flatness
+#   6. anisotropy
+
+[camera]
+position = [0.0, 3.2, 16.0]
+look_at  = [0.0, 1.0, 0.0]
+ref_up   = [0.0, 1.0, 0.0]
+fov      = 35
+
+[film]
+resolution  = [1600, 900]
+denoise     = false
+num_samples = 512
+
+[integrator]
+type      = 'path'
+max_depth = 32
+rr_depth  = 4
+rr_prob   = 0.1
+
+[envmap]
+texture = { type = 'constant', color = [0.03, 0.035, 0.04] }
+
+[[bsdf]]
+name       = 'ground'
+type       = 'principled'
+base_color = [0.45, 0.45, 0.45]
+roughness  = 0.85
+metallic   = 0.0
+specular   = 0.0
+
+[[bsdf]]
+name       = 'emitter_black'
+type       = 'diffuse'
+R          = [0.0, 0.0, 0.0]
+
+[[bsdf]]
+name       = 'diffuse_clay'
+type       = 'principled'
+base_color = [0.78, 0.24, 0.18]
+roughness  = 0.95
+metallic   = 0.0
+specular   = 0.0
+
+[[bsdf]]
+name       = 'metallic_brass'
+type       = 'principled'
+base_color = [1.0, 0.78, 0.34]
+roughness  = 0.20
+metallic   = 1.0
+specular   = 0.5
+
+[[bsdf]]
+name       = 'glass_reference'
+type       = 'principled'
+base_color = [1.0, 0.98, 0.95]
+roughness  = 0.05
+metallic   = 0.0
+spec_trans = 1.0
+eta        = 1.5
+
+[[bsdf]]
+name            = 'clearcoat_blue'
+type            = 'principled'
+base_color      = [0.08, 0.18, 0.74]
+roughness       = 0.28
+metallic        = 0.25
+specular        = 0.6
+clearcoat       = 1.0
+clearcoat_gloss = 0.92
+
+[[bsdf]]
+name       = 'sheen_fabric'
+type       = 'principled'
+base_color = [0.62, 0.50, 0.34]
+roughness  = 0.88
+metallic   = 0.0
+specular   = 0.0
+sheen      = 0.9
+sheen_tint = 0.5
+flatness   = 0.7
+
+[[bsdf]]
+name        = 'anisotropic_satin'
+type        = 'principled'
+base_color  = [0.85, 0.88, 0.92]
+roughness   = 0.18
+metallic    = 0.0
+specular    = 0.85
+anisotropic = 0.9
+
+[[primitive]]
+type   = 'sphere'
+center = [0.0, -100.0, 0.0]
+radius = 100.0
+bsdf   = 'ground'
+
+[[primitive]]
+type   = 'sphere'
+center = [-7.0, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'diffuse_clay'
+
+[[primitive]]
+type   = 'sphere'
+center = [-4.2, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'metallic_brass'
+
+[[primitive]]
+type   = 'sphere'
+center = [-1.4, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'glass_reference'
+
+[[primitive]]
+type   = 'sphere'
+center = [1.4, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'clearcoat_blue'
+
+[[primitive]]
+type   = 'sphere'
+center = [4.2, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'sheen_fabric'
+
+[[primitive]]
+type   = 'sphere'
+center = [7.0, 1.0, 0.0]
+radius = 1.0
+bsdf   = 'anisotropic_satin'
+
+[[primitive]]
+type   = 'sphere'
+center = [-6.8, 7.7, 5.4]
+radius = 1.0
+bsdf   = 'emitter_black'
+light  = { type = 'area', emission = [35.0, 30.0, 24.0] }
+
+[[primitive]]
+type   = 'sphere'
+center = [6.8, 6.9, 2.6]
+radius = 1.0
+bsdf   = 'emitter_black'
+light  = { type = 'area', emission = [18.0, 22.0, 30.0] }
