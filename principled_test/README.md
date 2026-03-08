@@ -7,7 +7,7 @@ This directory contains a small, stable scene pack for comparing Flux's
 
 - `principled_reference.toml` — broad outside-camera reference with six
   objects covering diffuse, metallic, clearcoat, specular transmission,
-  sheen/flatness, and anisotropy.
+  sheen/flatness, and a glossy white dielectric.
 - `principled_inside_camera.toml` — camera starts inside a transmissive
   sphere and looks back out toward external markers.
 - `principled_eta_one_warning.toml` — transmissive scene with `eta = 1.0`

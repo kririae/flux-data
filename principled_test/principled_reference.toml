@@ -5,7 +5,7 @@
 #   3. specular transmission
 #   4. clearcoat
 #   5. sheen + flatness
-#   6. anisotropy
+#   6. glossy white dielectric
 
 [camera]
 position = [0.0, 3.2, 16.0]
@@ -23,6 +23,9 @@ type      = 'path'
 max_depth = 32
 rr_depth  = 4
 rr_prob   = 0.1
+
+[sampler]
+type = 'halton'
 
 [envmap]
 texture = { type = 'constant', color = [0.03, 0.035, 0.04] }
@@ -87,13 +90,12 @@ sheen_tint = 0.5
 flatness   = 0.7
 
 [[bsdf]]
-name        = 'anisotropic_satin'
-type        = 'principled'
-base_color  = [0.85, 0.88, 0.92]
-roughness   = 0.18
-metallic    = 0.0
-specular    = 0.85
-anisotropic = 0.9
+name       = 'glossy_white'
+type       = 'principled'
+base_color = [0.85, 0.88, 0.92]
+roughness  = 0.18
+metallic   = 0.0
+specular   = 0.85
 
 [[primitive]]
 type   = 'sphere'
@@ -135,7 +137,7 @@ bsdf   = 'sheen_fabric'
 type   = 'sphere'
 center = [7.0, 1.0, 0.0]
 radius = 1.0
-bsdf   = 'anisotropic_satin'
+bsdf   = 'glossy_white'
 
 [[primitive]]
 type   = 'sphere'

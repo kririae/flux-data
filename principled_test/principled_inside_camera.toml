@@ -18,6 +18,9 @@ max_depth = 64
 rr_depth  = 6
 rr_prob   = 0.1
 
+[sampler]
+type = 'halton'
+
 [envmap]
 texture = { type = 'constant', color = [0.04, 0.045, 0.05] }
 

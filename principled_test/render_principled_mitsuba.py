@@ -40,7 +40,6 @@ SCENE_METADATA = {
 
 PRINCIPLED_COLOR_FIELDS = {"base_color"}
 PRINCIPLED_SCALAR_FIELDS = {
-    "anisotropic",
     "clearcoat",
     "clearcoat_gloss",
     "eta",
