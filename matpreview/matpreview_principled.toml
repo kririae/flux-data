@@ -1,0 +1,71 @@
+# Matpreview scene with Principled BSDFs for performance benchmarking.
+# Same geometry and camera as matpreview.toml; all materials use type = 'principled'.
+
+[camera]
+position = [0.0, 4.0, 6.8]
+look_at = [0.0, 0.8, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 30
+focal_length = 1.0
+
+[film]
+resolution = [1440, 1440]
+denoise = false
+num_samples = 1024
+
+[integrator]
+type = 'path'
+
+max_depth = 64
+rr_depth = 4
+rr_prob = 0.1
+
+[envmap]
+scale = 1.5
+rotation = [0.0, 180.0, 0.0]
+
+[envmap.texture]
+type = 'image'
+path = "texture/industrial_sunset_02_puresky_2k.exr"
+
+# Gold-like metallic
+[[bsdf]]
+name       = 'metallic_gold'
+type       = 'principled'
+base_color = [1.0, 0.78, 0.34]
+roughness  = 0.05
+metallic   = 1.0
+specular   = 0.5
+
+# Glossy wooden (approximation of roughplastic with principled)
+[[bsdf]]
+name       = 'glossy_wood'
+type       = 'principled'
+base_color = { type = 'image', path = 'texture/rosewood_veneer1_diff_2k.exr' }
+roughness  = 0.23
+metallic   = 0.0
+specular   = 0.6
+
+# Checkerboard floor
+[[bsdf]]
+name       = 'floor_checker'
+type       = 'principled'
+base_color = { type = 'checkerboard', scale = [16.0, 16.0] }
+roughness  = 0.85
+metallic   = 0.0
+specular   = 0.0
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_0.obj'
+bsdf = 'floor_checker'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_1.obj'
+bsdf = 'metallic_gold'
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/matpreview_2.obj'
+bsdf = 'glossy_wood'
