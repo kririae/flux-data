@@ -1,0 +1,144 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def "materials"
+    {
+        def Material "warm_emissive"
+        {
+            token outputs:mtlx:surface.connect = </World/materials/warm_emissive/MtlxSurface.outputs:out>
+
+            def Shader "MtlxSurface"
+            {
+                uniform token info:id = "ND_standard_surface_surfaceshader"
+                float inputs:base = 1
+                color3f inputs:base_color = (0.12, 0.08, 0.05)
+                float inputs:emission = 4
+                color3f inputs:emission_color = (1, 0.42, 0.16)
+                float inputs:specular = 0
+                float inputs:specular_roughness = 0.55
+                token outputs:out
+            }
+        }
+
+        def Material "cool_emissive"
+        {
+            token outputs:mtlx:surface.connect = </World/materials/cool_emissive/MtlxSurface.outputs:out>
+
+            def Shader "MtlxSurface"
+            {
+                uniform token info:id = "ND_standard_surface_surfaceshader"
+                float inputs:base = 1
+                color3f inputs:base_color = (0.04, 0.07, 0.12)
+                float inputs:emission = 3
+                color3f inputs:emission_color = (0.2, 0.65, 1)
+                float inputs:specular = 0
+                float inputs:specular_roughness = 0.55
+                token outputs:out
+            }
+        }
+
+        def Material "matte_grey"
+        {
+            token outputs:surface.connect = </World/materials/matte_grey/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.35, 0.36, 0.38)
+                float inputs:roughness = 0.62
+                token outputs:surface
+            }
+        }
+    }
+
+    def Mesh "ground" (
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 2, 3]
+        rel material:binding = </World/materials/matte_grey>
+        point3f[] points = [(-3.6, -0.6, -1.2), (3.6, -0.6, -1.2), (3.6, -0.6, 1.5), (-3.6, -0.6, 1.5)]
+        uniform token subdivisionScheme = "none"
+    }
+
+    def Scope "instances"
+    {
+        def Xform "panel_00" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            instanceable = true
+            prepend references = </_Prototype/Panel>
+        )
+        {
+            rel material:binding = </World/materials/warm_emissive>
+            double3 xformOp:translate = (-1.65, 0.15, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "panel_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            instanceable = true
+            prepend references = </_Prototype/Panel>
+        )
+        {
+            rel material:binding = </World/materials/cool_emissive>
+            double3 xformOp:translate = (-0.55, 0.15, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "panel_02" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            instanceable = true
+            prepend references = </_Prototype/Panel>
+        )
+        {
+            rel material:binding = </World/materials/warm_emissive>
+            double3 xformOp:translate = (0.55, 0.15, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+
+        def Xform "panel_03" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            instanceable = true
+            prepend references = </_Prototype/Panel>
+        )
+        {
+            rel material:binding = </World/materials/cool_emissive>
+            double3 xformOp:translate = (1.65, 0.15, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+        }
+    }
+
+    def Camera "camera"
+    {
+        float focalLength = 38
+        float verticalAperture = 20.955
+        float3 xformOp:rotateXYZ = (-2, 0, 0)
+        double3 xformOp:translate = (0, 0.45, 4.8)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ"]
+    }
+}
+
+def "_Prototype"
+{
+    class Xform "Panel"
+    {
+        def Mesh "mesh"
+        {
+            int[] faceVertexCounts = [4]
+            int[] faceVertexIndices = [0, 1, 2, 3]
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+                interpolation = "vertex"
+            )
+            point3f[] points = [(-0.45, -0.45, 0), (0.45, -0.45, 0), (0.45, 0.45, 0), (-0.45, 0.45, 0)]
+            uniform token subdivisionScheme = "none"
+        }
+    }
+}
+

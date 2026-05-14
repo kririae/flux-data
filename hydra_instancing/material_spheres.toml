@@ -1,0 +1,16 @@
+[scene]
+type = "usd"
+path = "material_spheres.usda"
+camera = "/World/camera"
+
+[film]
+resolution = [768, 512]
+num_samples = 512
+denoise = false
+
+[integrator]
+type = "path"
+max_depth = 6
+rr_depth = 4
+rr_prob = 0.95
+

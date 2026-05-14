@@ -1,0 +1,4 @@
+*.exr
+*.png
+!reference/
+!reference/*.exr

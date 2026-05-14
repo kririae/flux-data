@@ -1,0 +1,15 @@
+[scene]
+type = "usd"
+path = "emissive_material_instances.usda"
+camera = "/World/camera"
+
+[film]
+resolution = [512, 320]
+num_samples = 512
+denoise = false
+
+[integrator]
+type = "path"
+max_depth = 6
+rr_depth = 4
+rr_prob = 0.95
