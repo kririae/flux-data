@@ -1,0 +1,39 @@
+[camera]
+position = [0.0, 0.05, 4.2]
+look_at = [-0.42, 0.34, 0.0]
+ref_up = [0.0, 1.0, 0.0]
+fov = 13
+focal_length = 1.0
+
+[film]
+resolution = [768, 768]
+denoise = false
+num_samples = 512
+
+[integrator]
+type = 'path'
+max_depth = 16
+rr_depth = 6
+rr_prob = 0.1
+shader_reorder = false
+
+[sampler]
+type = 'independent'
+
+[envmap]
+texture = { type = 'image', path = '../glass_sphere/texture/industrial_sunset_02_puresky_2k.exr' }
+
+[[bsdf]]
+type = 'principled'
+name = 'rough_transmission'
+base_color = [1.0, 0.96, 0.88]
+roughness = 0.35
+metallic = 0.0
+spec_trans = 1.0
+eta = 1.5
+
+[[primitive]]
+type = 'trimesh'
+path = 'geometry/low_div_sphere.ply'
+bsdf = 'rough_transmission'
+face_normals = false
