@@ -1,0 +1,16 @@
+# ShaderBall: UV grid texture
+
+[scene]
+type = "usd"
+path = "./shaderball_uvgrid.usda"
+camera = "/standard_shader_ball_scene/camera"
+
+[film]
+resolution = [512, 512]
+num_samples = 512
+denoise = true
+
+[integrator]
+type = "path"
+max_depth = 16
+rr_depth = 4

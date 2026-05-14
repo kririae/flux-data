@@ -1,0 +1,16 @@
+# ShaderBall: MaterialX glass
+
+[scene]
+type = "usd"
+path = "./shaderball_mtlx_glass.usda"
+camera = "/standard_shader_ball_scene/camera"
+
+[film]
+resolution = [512, 512]
+num_samples = 512
+denoise = true
+
+[integrator]
+type = "path"
+max_depth = 32
+rr_depth = 4

@@ -1,0 +1,16 @@
+# ShaderBall: MaterialX plastic
+
+[scene]
+type = "usd"
+path = "./shaderball_mtlx_plastic.usda"
+camera = "/standard_shader_ball_scene/camera"
+
+[film]
+resolution = [1024, 1024]
+num_samples = 256
+denoise = true
+
+[integrator]
+type = "path"
+max_depth = 16
+rr_depth = 4

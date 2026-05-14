@@ -1,0 +1,8 @@
+# Generated FLux renders in this scene directory.
+/*.exr
+/*.png
+/*.jpg
+
+# Keep future reference images under reference/ trackable.
+!/reference/
+!/reference/**
