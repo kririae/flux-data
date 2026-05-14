@@ -1,6 +1,12 @@
 # mitsuba output
 *.mip
+*.rat
 *.log
+.tmp_*
+
+# Python generated files
+__pycache__/
+*.py[cod]
 
 # WIP
 classroom/
