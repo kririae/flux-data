@@ -11,7 +11,7 @@ fov      = 45
 [film]
 resolution  = [768, 768]
 denoise     = false
-num_samples = 1024
+num_samples = 512
 
 [integrator]
 type      = 'path'

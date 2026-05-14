@@ -8,7 +8,7 @@ focal_length = 1.0
 [film]
 resolution = [800, 1000]
 denoise = false
-num_samples = 8192
+num_samples = 512
 
 [integrator]
 type = "path"

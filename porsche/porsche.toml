@@ -13,7 +13,7 @@ fov = 10
 [film]
 resolution = [3840, 2160]
 denoise = true
-num_samples = 8192
+num_samples = 512
 
 [sampler]
 type = "halton"
