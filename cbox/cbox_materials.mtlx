@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<materialx version="1.38">
+  <surfacematerial name="GreyMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="grey_surface" />
+  </surfacematerial>
+  <standard_surface name="grey_surface" type="surfaceshader">
+    <input name="base" type="float" value="1.0" />
+    <input name="base_color" type="color3" value="0.725, 0.71, 0.68" />
+    <input name="specular" type="float" value="0.0" />
+  </standard_surface>
+
+  <surfacematerial name="RedMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="red_surface" />
+  </surfacematerial>
+  <standard_surface name="red_surface" type="surfaceshader">
+    <input name="base" type="float" value="1.0" />
+    <input name="base_color" type="color3" value="0.63, 0.065, 0.05" />
+    <input name="specular" type="float" value="0.0" />
+  </standard_surface>
+
+  <surfacematerial name="GreenMaterial" type="material">
+    <input name="surfaceshader" type="surfaceshader" nodename="green_surface" />
+  </surfacematerial>
+  <standard_surface name="green_surface" type="surfaceshader">
+    <input name="base" type="float" value="1.0" />
+    <input name="base_color" type="color3" value="0.14, 0.45, 0.091" />
+    <input name="specular" type="float" value="0.0" />
+  </standard_surface>
+</materialx>

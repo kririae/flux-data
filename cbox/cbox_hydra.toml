@@ -1,0 +1,10 @@
+# Hydra headless reference path for cbox integration tests.
+
+[scene]
+type = "usd"
+path = "cbox.usda"
+
+[film]
+resolution = [512, 512]
+num_samples = 512
+denoise = false
